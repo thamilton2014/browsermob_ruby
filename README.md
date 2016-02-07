@@ -1,8 +1,15 @@
 Browsermob Ruby Restclient SDK
 ====
 
+Master
+***
+
 [![Build Status](https://travis-ci.org/thamilton2014/browsermob_ruby.svg?branch=master)](https://travis-ci.org/thamilton2014/browsermob_ruby)
 
+Development
+***
+
+[![Build Status](https://travis-ci.org/thamilton2014/browsermob_ruby.svg?branch=development)](https://travis-ci.org/thamilton2014/browsermob_ruby)
 
 Getting Started
 ---
