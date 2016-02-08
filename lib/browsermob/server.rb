@@ -74,15 +74,25 @@ module Browsermob
 		attr_reader :url
 
 		#
+		# The server host
+		#
+		attr_accessor :host
+
+		#
 		# The server port
 		#
 		attr_accessor :port
 
 		#
-		# The proxy port created
+		# The proxy url
+		#
+		attr_accessor :proxy_url
+
+		#
+		# The proxy port
 		#
 		attr_accessor :proxy_port
-
+		
 		#
 		# Whether to launch the server in the background
 		#
@@ -95,12 +105,13 @@ module Browsermob
 
 		def initialize(jar, opts = {})
 			@jar 			= jar
-			@host	 		= "127.0.0.1"
+			@host	 		= opts.fetch(:host, "127.0.0.1")
 			@port 			= opts.fetch(:port, 8080)
 			@background 	= opts.fetch(:background, false)
 			@log 			= opts[:log]
 
 			@url 			= "#{@host}:#{@port}"
+
 			@api_client 	= Browsermob::API.new
 
 			@additional_args = []
@@ -193,6 +204,8 @@ module Browsermob
 		end
 
 		def poll_for_service
+
+
 			unless socket.connected?
  				raise Error, "remote server not launched in #{@timeout} seconds"
  			end
