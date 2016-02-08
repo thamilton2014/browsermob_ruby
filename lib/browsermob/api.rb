@@ -12,7 +12,7 @@ module Browsermob
 		end
 
 		def get_proxy_list
-			Services::ProxyService.proxy
+			Services::ProxyService.get_proxy_list
 		end
 
 		def create_proxy(payload = {})
@@ -23,8 +23,8 @@ module Browsermob
 			Services::ProxyService.create_proxy_har(port, payload)
 		end
 
-		def get_proxy_har(port)
-			Services::ProxyService.get_proxy_har(port)
+		def get_proxy_har(port, output_path = nil)
+			Services::ProxyService.get_proxy_har(port, output_path)
 		end
 
 		def create_proxy_page(port, payload = {})

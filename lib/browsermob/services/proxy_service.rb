@@ -18,7 +18,7 @@ module Browsermob
 
 				def create_proxy(payload)
 					url = Util::Config.get("endpoints.base_url") + Util::Config.get("endpoints.proxy")
-					RestClient.post(url, payload)
+					response = RestClient.post(url, payload)
 				end
 
 				def create_proxy_har(port, payload)
@@ -26,9 +26,13 @@ module Browsermob
 					RestClient.put(url, payload)
 				end
 
-				def get_proxy_har(port)
+				def get_proxy_har(port, output_path)
 					url = Util::Config.get("endpoints.base_url") + sprintf(Util::Config.get("endpoints.har"), port)
-					RestClient.get(url)
+					response = RestClient.get(url)
+
+					unless output_path.nil?
+						File.open(output_path, "w") {|file| file.write(response.to_json)}
+					end
 				end
 
 				def create_proxy_page(port, payload)

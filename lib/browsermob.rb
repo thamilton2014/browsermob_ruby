@@ -6,11 +6,16 @@
 require 'rubygems'
 require 'json'
 require 'rest-client'
+require "childprocess"
+require 'selenium-webdriver'
+require 'fileutils'
+
 
 module Browsermob
 
 	require_relative "version"
 	require_relative "browsermob/api"
+	require_relative "browsermob/server"
 
 	module Services
 
